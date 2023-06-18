@@ -15,12 +15,32 @@
 # Available Routes
 
 ## GET
-- `jenis-barang`
-- `jenis-barang/{id}`
-- `barang`
-- `barang/{id}`
-- `transaksi`
-- `transaksi/{id}`
+### Route :  `jenis-barang`
+### Params :
+- `keyword: string`
+------------------------------
+### Route :  `jenis-barang/{id}`
+### Params :
+- `id: integer`
+------------------------------
+### Route :  `barang`
+### Params :
+- `nama: string`
+- `stock: integer`
+------------------------------
+### Route :  `barang/{id}`
+### Params :
+- `id: integer`
+------------------------------
+### Route :  `transaksi`
+### Params :
+- `nama_barang: string`
+- `tanggal_transaksi: Date (e.g. 2022-06-17)`
+------------------------------
+### Route :  `transaksi/{id}`
+### Params :
+- `id: integer`
+------------------------------
 
 ## POST
 ### Route :  `jenis-barang`
