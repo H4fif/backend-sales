@@ -36,6 +36,8 @@
 ### Params :
 - `nama_barang: string`
 - `tanggal_transaksi: Date (e.g. 2022-06-17)`
+- `sort_type: asc | desc`
+- `sort_by: nama_barang | tanggal_transaksi | jumlah_terjual`
 ------------------------------
 ### Route :  `transaksi/{id}`
 ### Params :
