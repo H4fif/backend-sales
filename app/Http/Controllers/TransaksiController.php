@@ -30,10 +30,27 @@ class TransaksiController extends Controller
         }
 
         $data = $data->join('barang', 'transaksi.id_barang', 'barang.id')
-            ->join('jenis_barang', 'barang.id_jenis_barang', 'jenis_barang.id')
-            ->orderBy('barang.nama', 'asc')
-            ->orderBy('transaksi.created_at', 'asc')
-            ->get();
+            ->join('jenis_barang', 'barang.id_jenis_barang', 'jenis_barang.id');
+
+        $sortType = 'asc';
+
+        if ($request->has('sort_type') && strtolower($request->sort_type) == 'desc') {
+            $sortType = 'desc';
+        }
+
+        if ($request->has('sort_by')) {
+            if (strtolower($request->sort_by) == 'nama_barang') {
+                $data = $data->orderBy('barang.nama', $sortType);
+            } else if (strtolower($request->sort_by) == 'tanggal_transaksi') {
+                $data = $data->orderBy('transaksi.created_at', $sortType);
+            } else if (strtolower($request->sort_by) == 'jumlah_terjual') {
+                $data = $data->orderBy('transaksi.jumlah', $sortType);
+            }
+        } else {
+            $data = $data->orderBy('transaksi.created_at', 'desc');
+        }
+
+        $data = $data->get();
 
         return response()->json([
             'data' => $data,
